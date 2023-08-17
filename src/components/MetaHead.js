@@ -1,9 +1,9 @@
 import Head from 'next/head'
 
-export default function MetaHead(props) {
+    export default function MetaHead(props) {
     return(
         <Head>
-            <title>{props.title} - lalaland.com</title>
+            <title>{`${props.title} - lalaland.com`}</title>
             <meta name="description" content={props.description} />
             <meta property="og:title" content={props.title} />
             <meta property="og:description" content={props.description} />

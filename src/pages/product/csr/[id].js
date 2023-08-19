@@ -8,7 +8,7 @@ export default function ProductDetail() {
     const router = useRouter()
     
     const fetchDataProduct = async (id) => {
-        const response = await fetch(`https://fakestoreapi.com/products/${id}`)
+        const response = await fetch(`${process.env.NEXT_PUBLIC_HOST_API}/products/${id}`)
         const product = await response.json()
         
         setData(product)
@@ -28,7 +28,7 @@ export default function ProductDetail() {
                 title={data.title}
                 description={data.description}
                 image={data.image}
-                url={`http://localhost:3000/product/${data.id}`}
+                url={`${process.env.NEXT_PUBLIC_HOST_NAME}/product/${data.id}`}
             />
             
             <h1>{data.title}</h1>

@@ -1,7 +1,7 @@
 import '@/styles/globals.css'
 import Layout from "@/components/Layout";
 
-export default function MyNextApp({ Component, pageProps }) {
+export default function LearnNextApp({ Component, pageProps }) {
   return (
     <Layout>
       <Component {...pageProps} />

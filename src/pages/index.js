@@ -14,10 +14,6 @@ export default function Home() {
   }
 
   useEffect(() => {
-    console.log('process.env.NEXT_PUBLIC_TWITTER_URL', process.env.NEXT_PUBLIC_TWITTER_URL)
-    console.log('process.env.NEXT_PUBLIC_TWITTER_URL', process.env.NEXT_PUBLIC_FACEBOOK_URL)
-    console.log('process.env.NEXT_PUBLIC_TWITTER_URL', process.env.NEXT_PUBLIC_IG_URL)
-
     fetchProduct()
   }, [])
 
@@ -33,8 +29,10 @@ export default function Home() {
     <section>
       {product.length > 0 ? (
         product?.map((value) => (
-          <Link key={value.id} href={`/product/${value.id}`} className="flex flex-col items-center mb-5 bg-white border border-gray-200 rounded-lg shadow md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-            <img className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src={value.image} alt={value.title} />
+          <Link key={value.id} href={`/product/${value.id}`} className="flex flex-col items-center mb-5 bg-white border border-gray-200 rounded-lg shadow p-2 md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+            <div className="w-72 h-[265px] bg-red-50 flex-none">
+              <img className="object-cover w-full h-[265px] object-cover bg-red-200" src={value.image} alt={value.title} />
+            </div>
             <div className="flex flex-col justify-between p-4 leading-normal">
               <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{value.title}</h5>
               <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{value.description}</p>

@@ -34,7 +34,7 @@ export default function Header() {
                 <ActiveLink href="/" className="flex items-center" onHandleMobileMenu={() => setIsShowMobileMenu(false)}>
                     <img src="https://flowbite.com/docs/images/logo.svg" className="h-8 mr-3" alt="Flowbite Logo"/>
                     <span
-                        className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+                        className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">NextCommerce</span>
                 </ActiveLink>
 
                 <div className="flex md:order-2">

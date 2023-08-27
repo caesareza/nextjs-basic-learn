@@ -44,7 +44,6 @@ export default function Home() {
                     alt={value.title}
                     width={500}
                     height={500}
-                    loading="lazy"
                   />
                 </div>
                 <div className="flex flex-col justify-between p-4 leading-normal">

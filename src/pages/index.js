@@ -1,6 +1,7 @@
 import MetaHead from "@/components/MetaHead";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   const [product, setProduct] = useState([]);
@@ -37,10 +38,13 @@ export default function Home() {
                 className="flex flex-col items-center mb-5 bg-white border border-gray-200 rounded-lg shadow p-2 md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
               >
                 <div className="w-72 h-[265px] bg-red-50 flex-none">
-                  <img
+                  <Image
                     className="object-cover w-full h-[265px] object-cover bg-red-200"
                     src={value.image}
                     alt={value.title}
+                    width={500}
+                    height={500}
+                    loading="lazy"
                   />
                 </div>
                 <div className="flex flex-col justify-between p-4 leading-normal">
@@ -87,10 +91,7 @@ export default function Home() {
 }
 
 export async function getServerSideProps({ req, res }) {
-  res.setHeader(
-    "Cache-Control",
-    "public, s-maxage=10, stale-while-revalidate=59"
-  );
+  res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
 
   return {
     props: {},

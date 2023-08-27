@@ -6,7 +6,6 @@ export default function Document() {
     <Html lang="id">
       <Head>
         <meta name="robots" content="index, follow" />
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet" />
       </Head>
       <body>
         <Main />

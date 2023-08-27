@@ -1,6 +1,5 @@
-import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 function ActiveLink({ children, href, className, onHandleMobileMenu }) {
   const router = useRouter();

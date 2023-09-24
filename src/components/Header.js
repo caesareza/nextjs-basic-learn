@@ -1,5 +1,7 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import Link from "next/link";
+import { CartContext } from "@/contexts/CartContext";
 
 function ActiveLink({ children, href, className, onHandleMobileMenu }) {
   const router = useRouter();
@@ -19,6 +21,7 @@ function ActiveLink({ children, href, className, onHandleMobileMenu }) {
 
 export default function Header() {
   const [isShowMobileMenu, setIsShowMobileMenu] = useState(false);
+  const { cart } = useContext(CartContext);
 
   const onHandleMobileMenu = () => setIsShowMobileMenu(!isShowMobileMenu);
 
@@ -43,12 +46,13 @@ export default function Header() {
         </ActiveLink>
 
         <div className="flex md:order-2">
-          <button
+          <Link
+            href="/cart"
             type="button"
             className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
-            Get started
-          </button>
+            Cart ({cart.length})
+          </Link>
           <button
             onClick={onHandleMobileMenu}
             type="button"

@@ -23,7 +23,7 @@ export default function Home() {
   return (
     <>
       <MetaHead
-        title="Home"
+        title="Homex"
         description="Ini adalah halaman home"
         image={`${process.env.NEXT_PUBLIC_HOST_NAME}/images/logo/nike.svg`}
         url={process.env.NEXT_PUBLIC_HOST_NAME}

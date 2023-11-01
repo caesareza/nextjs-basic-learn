@@ -4,7 +4,7 @@ import { CartContext } from "@/contexts/CartContext";
 
 export default function Cart() {
   const [summary, setSummary] = useState(0);
-  const { cart } = useContext(CartContext);
+  const { cart, onDeleteCart } = useContext(CartContext);
 
   const total = () => {
     let total = 0;
@@ -45,6 +45,7 @@ export default function Cart() {
                   ${value.price}
                 </p>
               </div>
+              <button className="bg-red-500 p-2 text-white" onClick={() => onDeleteCart(value.id)}>Delete</button>
             </div>
           ))}
         </div>

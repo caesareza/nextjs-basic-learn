@@ -9,15 +9,13 @@ export default function ProductDetail({ data }) {
   const [isAlert, setIsAlert] = useState(false);
   const { cart, setCart } = useContext(CartContext);
 
-  const addToCart = () => {
+  const onAddToCart = () => {
     setIsAlert(false);
     setIsLoading(true);
-
     console.log("atc", data);
     const dataCart = [...cart, data];
     setCart(dataCart);
     localStorage.setItem("cart", JSON.stringify(dataCart));
-
     setIsAlert(true);
     setIsLoading(false);
   };
@@ -98,7 +96,7 @@ export default function ProductDetail({ data }) {
           <p className="py-3">{data.description}</p>
 
           <button
-            onClick={addToCart}
+            onClick={onAddToCart}
             className="font-bold bg-amber-300 rounded p-3 mt-5 hover:bg-pink-500"
             disable={isLoading}
           >

@@ -2,17 +2,22 @@ import MetaHead from "@/components/MetaHead";
 import Link from "next/link";
 
 import { useContext, useState } from "react";
-import { CartContext } from "@/contexts/CartContext";
+// import { CartContext } from "@/contexts/CartContext";
+
+import { useDispatch } from "react-redux";
+import { addToCart } from "@/store/cartSlice";
 
 export default function ProductDetail({ data }) {
   const [isLoading, setIsLoading] = useState(false);
   const [isAlert, setIsAlert] = useState(false);
-  const { cart, setCart, onAddToCart } = useContext(CartContext);
+  // const { cart, setCart, onAddToCart } = useContext(CartContext);
+
+  const dispatch = useDispatch()
 
   const onInsertToCart = () => {
     setIsAlert(false);
     setIsLoading(true);
-    onAddToCart(data)
+    dispatch(addToCart(data))
     setIsAlert(true);
     setIsLoading(false);
   };

@@ -1,14 +1,20 @@
 import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
-import { CartContext } from "@/contexts/CartContext";
+// import { CartContext } from "@/contexts/CartContext";
+
+import { useSelector, useDispatch } from "react-redux";
+import { deleteCart } from "@/store/cartSlice";
 
 export default function Cart() {
   const [summary, setSummary] = useState(0);
-  const { cart, onDeleteCart } = useContext(CartContext);
+  // const { cart, onDeleteCart } = useContext(CartContext);
+
+  const dataCartDariRedux = useSelector((state) => state.cart.value)
+  const dispatch = useDispatch()
 
   const total = () => {
     let total = 0;
-    cart.forEach((value) => {
+    dataCartDariRedux.forEach((value) => {
       total += value.price;
     });
     setSummary(total);
@@ -16,17 +22,17 @@ export default function Cart() {
 
   useEffect(() => {
     total();
-  }, [cart]);
+  }, [dataCartDariRedux]);
 
   return (
-    <section className="">
+    <section>
       <h1 className="mb-5 font-bold text-2xl">Cart</h1>
       <div className="flex gap-5">
         <div className="w-full">
-          {cart.map((value) => (
+          {dataCartDariRedux.map((value) => (
             <div
               key={value.id}
-              className="flex flex-col items-center mb-5 bg-white border border-gray-200 rounded-lg shadow p-2 md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+              className="flex flex-col items-center mb-5 bg-white border border-gray-200 rounded-lg shadow p-5 md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
             >
               <div className="w-[100px] h-[100px] bg-red-50 flex-none">
                 <Image
@@ -44,8 +50,9 @@ export default function Cart() {
                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                   ${value.price}
                 </p>
+                <div>Quantity: {value.quantity}</div>
               </div>
-              <button className="bg-red-500 p-2 text-white" onClick={() => onDeleteCart(value.id)}>Delete</button>
+              <button className="bg-red-500 p-2 text-white ml-auto  " onClick={() => dispatch(deleteCart(value.id))}>Delete</button>
             </div>
           ))}
         </div>

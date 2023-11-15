@@ -9,13 +9,13 @@ export default function Cart() {
   const [summary, setSummary] = useState(0);
   // const { cart, onDeleteCart } = useContext(CartContext);
 
-  const dataCartDariRedux = useSelector((state) => state.cart.value)
-  const dispatch = useDispatch()
+  const dataCartDariRedux = useSelector((state) => state.cart.value);
+  const dispatch = useDispatch();
 
   const total = () => {
     let total = 0;
     dataCartDariRedux.forEach((value) => {
-      total += value.price;
+      total += value.price * value.quantity;
     });
     setSummary(total);
   };
@@ -52,7 +52,12 @@ export default function Cart() {
                 </p>
                 <div>Quantity: {value.quantity}</div>
               </div>
-              <button className="bg-red-500 p-2 text-white ml-auto  " onClick={() => dispatch(deleteCart(value.id))}>Delete</button>
+              <button
+                className="bg-red-500 p-2 text-white ml-auto  "
+                onClick={() => dispatch(deleteCart(value.id))}
+              >
+                Delete
+              </button>
             </div>
           ))}
         </div>

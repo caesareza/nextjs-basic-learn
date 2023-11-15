@@ -23,8 +23,8 @@ function ActiveLink({ children, href, className, onHandleMobileMenu }) {
 export default function Header() {
   const [isShowMobileMenu, setIsShowMobileMenu] = useState(false);
 
-  const cart = useSelector((state) => state.cart.value)
-  const { isLogin, value } = useSelector((state) => state.auth)
+  const cart = useSelector((state) => state.cart.value);
+  const { isLogin, value } = useSelector((state) => state.auth);
 
   const onHandleMobileMenu = () => setIsShowMobileMenu(!isShowMobileMenu);
 
@@ -58,7 +58,13 @@ export default function Header() {
           </Link>
 
           {isLogin && (
-            <img class="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500 mr-3" src={value.image} alt="Bordered avatar" />
+            <Link href="/dashboard/profile">
+              <img
+                class="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500 mx-3"
+                src={value.image}
+                alt="Bordered avatar"
+              />
+            </Link>
           )}
 
           <button
@@ -87,8 +93,9 @@ export default function Header() {
           </button>
         </div>
         <div
-          className={`items-center justify-between ${isShowMobileMenu ? "" : "hidden"
-            } w-full md:flex md:w-auto md:order-1`}
+          className={`items-center justify-between ${
+            isShowMobileMenu ? "" : "hidden"
+          } w-full md:flex md:w-auto md:order-1`}
         >
           <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
             <li>

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 // import { CartContext } from "@/contexts/CartContext";
 
 import { useSelector, useDispatch } from "react-redux";
